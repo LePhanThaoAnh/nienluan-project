@@ -35,6 +35,6 @@ class CartProduct extends Model
 
     public function getTotalPriceAttribute()
     {
-        return    $this->product->sale ? $this->product->sale_price * $this->product_quantity : $this->product->price * $this->product_quantity;
+        return $this->product->sale ? $this->product->sale_price * $this->product_quantity : $this->product->price * $this->product_quantity;
     }
 }

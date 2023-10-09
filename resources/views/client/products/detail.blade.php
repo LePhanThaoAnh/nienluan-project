@@ -24,7 +24,7 @@
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
                             <img class="w-100 h-100"
-                                src="{{ $product->images->count() > 0 ? asset('upload/' . $product->images->first()->url) : 'upload/default.png' }}"
+                                src="{{ $product->images->count() > 0 ? asset('upload/' . $product->images->first()->url) : 'upload/default.jpg' }}"
                                 alt="Image">
                         </div>
 

@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CounponController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
@@ -101,7 +101,7 @@ Route::middleware('auth')->group(function(){
         Route::delete('/{coupon}', 'destroy')->name('destroy')->middleware('permission:delete-product');
         Route::get('/{coupon}/edit', 'edit')->name('edit')->middleware('permission:update-product');
     });
-    Route::prefix('coupons')->controller(CounponController::Class)->name('coupons.')->group(function(){
+    Route::prefix('coupons')->controller(CouponController::Class)->name('coupons.')->group(function(){
             Route::get('/', 'index')->name('index')->middleware('permission:show-coupon');
             Route::post('/', 'store')->name('store')->middleware('permission:create-coupon');
             Route::get('/create', 'create')->name('create')->middleware('permission:create-coupon');

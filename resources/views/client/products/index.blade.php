@@ -169,7 +169,7 @@
                                 <div
                                     class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                     <img class="img-fluid w-100"
-                                        src="{{ $item->images->count() > 0 ? asset('upload/' . $item->images->first()->url) : 'upload/default.png' }}"
+                                        src="{{ $item->images->count() > 0 ? asset('upload/' . $item->images->first()->url) : 'ault.png' }}"
                                         alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">

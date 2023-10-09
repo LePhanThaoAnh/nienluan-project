@@ -22,7 +22,7 @@ class CartController extends Controller
     protected $coupon;
     protected $order;
 
-  
+
     public function __construct(Product $product, Cart $cart, CartProduct $cartProduct, Coupon $coupon, Order $order)
     {
         $this->product = $product;
@@ -37,6 +37,29 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function store(Request $request)
+     {
+        if($request->product_size){
+            $product = $this->product->findOrFail($request->product_id);
+            $cart= $this->cart->firtOrCreateBy(auth()->user()->id);
+            $cartProduct = $this->cartProduct->getBy($cart->id, $product->id, $request->product_size);
+            if($cartProduct){
+                $quantity = $cartProduct->product_quantity;
+                $cartProduct->update(['product_quantity' => ($quantity + $request->product_quantity)]);
+            }else {
+                $dataCreate['cart_id'] = $cart->id;
+                $dataCreate['product_size'] = $request->product_size;
+                $dataCreate['product_quantity'] = $request->product_quantity;
+                $dataCreate['product_price'] = $request->price;
+                $dataCreate['product_id'] = $request->product_id;
+                $this->cartProduct->create($dataCreate);
+            }
+            return back()->with(['message' => "Thêm thành công"]);
+        } else {
+            return back()->with(['message' => "Bạn chưa chọn size"]);
+        }
+    }
     public function index()
     {
         $cart = $this->cart->firtOrCreateBy(auth()->user()->id)->load('products');

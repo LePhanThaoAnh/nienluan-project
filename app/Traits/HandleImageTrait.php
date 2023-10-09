@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Traits;
-use Image;
+
+use Intervention\Image\Facades\Image;
+// use Image;
 
 trait HandleImageTrait
 {

@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class RoleDatabaseSeeder extends Seeder
 {
@@ -39,7 +40,7 @@ class RoleDatabaseSeeder extends Seeder
 
         if(!$superAdmin)
         {
-            $superAdmin = User::factory()->create(['email' => 'admin@gmail.com']);
+            $superAdmin = User::factory()->create(['email' => 'admin@gmail.com', 'password' => Hash::make("123456")]);
         }
         $superAdmin->assignRole('super-admin');
 

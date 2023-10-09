@@ -13,7 +13,7 @@ class Cart extends Model
         'user_id',
     ];
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(CartProduct::class, 'cart_id');
     }
@@ -32,6 +32,7 @@ class Cart extends Model
         }
         return $cart;
     }
+
 
     public function getProductCountAttribute()
     {

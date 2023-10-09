@@ -43,7 +43,7 @@ class Product extends Model
         }
 
         public function getImagePathAtrribute(){
-            return asset($this->images()->count() > 0 ? 'upload/' .$this->images()->first()->url: 'upload/default.png');
+            return asset($this->images()->count() > 0 ? 'upload/' .$this->images()->first()->url: 'upload/default.jpg');
         }
 
         public function getSalePriceAttribute(){

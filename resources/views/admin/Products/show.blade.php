@@ -10,7 +10,7 @@
                 <div class=" ">
                     <p>Image</p>
                     <div class="col-5">
-                        <img src="{{ $product->images ? asset('upload/' . $product->images->first()->url) : 'upload/default.png' }}"
+                        <img src="{{ $product->images ? asset('upload/' . $product->images->first()->url) : 'upload/default.jpg' }}"
                             id="show-image" alt="">
                     </div>
                 </div>
