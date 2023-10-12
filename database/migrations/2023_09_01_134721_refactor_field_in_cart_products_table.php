@@ -22,7 +22,6 @@ return new class extends Migration
 
         if(Schema::hasColumn('cart_products', 'user_id'))
         Schema::table('cart_products', function (Blueprint $table) {
-            $table->dropForeignIdFor(User::class);
             $table->dropColumn('user_id');
         });
 

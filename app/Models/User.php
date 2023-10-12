@@ -53,14 +53,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function images()
-    {
-        return $this->morphMany(Image::class, 'imageable');
-    }
+    // public function images()
+    // {
+    //     return $this->morphMany(Image::class, 'imageable');
+    // }
 
-    public function getImagePathAttribute(){
-        return asset($this->images->count()>0 ? 'upload/' . $this ->images->first() ->url:'upload/default.jpg');
-    }
+    // public function getImagePathAttribute(){
+    //     return asset($this->images->count()>0 ? 'upload/' . $this ->images->first() ->url:'upload/default.jpg');
+    // }
     /**
      * @param array|int $roles
      * @return array

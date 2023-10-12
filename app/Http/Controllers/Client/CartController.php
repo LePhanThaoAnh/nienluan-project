@@ -42,7 +42,7 @@ class CartController extends Controller
      {
         if($request->product_size){
             $product = $this->product->findOrFail($request->product_id);
-            $cart= $this->cart->firtOrCreateBy(auth()->user()->id);
+            $cart= $this->cart->firstOrCreateBy(auth()->user()->id);
             $cartProduct = $this->cartProduct->getBy($cart->id, $product->id, $request->product_size);
             if($cartProduct){
                 $quantity = $cartProduct->product_quantity;
@@ -62,7 +62,7 @@ class CartController extends Controller
     }
     public function index()
     {
-        $cart = $this->cart->firtOrCreateBy(auth()->user()->id)->load('products');
+        $cart = $this->cart->firstOrCreateBy(auth()->user()->id)->load('products');
 
         return view('client.carts.index', compact('cart'));
     }

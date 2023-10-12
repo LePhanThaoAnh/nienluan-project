@@ -8,21 +8,6 @@
             <form action="{{ route('users.update', $user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                <div class="row">
-                    <div class=" input-group-static col-5 mb-4">
-                        <label>Image</label>
-                        <input type="file" accept="image/*" name="image" id="image-input" class="form-control">
-
-                        @error('image')
-                            <span class="text-danger"> {{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col-5">
-                        <img src="{{ $user->images ? asset('upload/users/' . $user->images->first()->url) : 'upload/users/default.png' }}"
-                            id="show-image" alt="">
-                    </div>
-                </div>
-
                 <div class="input-group input-group-static mb-4">
                     <label>Name</label>
                     <input type="text" value="{{ old('name') ?? $user->name }}" name="name" class="form-control">

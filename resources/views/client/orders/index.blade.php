@@ -13,7 +13,6 @@
                   <table class="table table-hover">
                       <tr>
                           <th>#</th>
-
                           <th>status</th>
                           <th>total</th>
                           <th>ship</th>

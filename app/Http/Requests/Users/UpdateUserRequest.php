@@ -25,7 +25,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required',
             'phone' => 'required|unique:users,phone,'.$this->coupon,
             'gender' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,PNG,jpec',
+            // 'image' => 'nullable|image|mimes:png,jpg,PNG,jpec',
             'password' => 'nullable|min:6',
             'email'=> 'unique:users,email,'.$this->coupon,
         ];

@@ -23,12 +23,10 @@ class Cart extends Model
         return Cart::whereUserId($userId)->first();
     }
 
-    public function firtOrCreateBy($userId)
-    {
+    public function firstOrCreateBy($userId){
         $cart = $this->getBy($userId);
-
-        if (!$cart) {
-            $cart = $this->cart->create(['user_id' => $userId]);
+        if(!$cart){
+            $cart = $this->cart->created(['user_id' => $userId]);
         }
         return $cart;
     }

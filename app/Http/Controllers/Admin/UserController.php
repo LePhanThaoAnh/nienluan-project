@@ -62,9 +62,9 @@ class UserController extends Controller
     {
         $dataCreate = $request->all();
         $dataCreate['password'] = Hash::make($request->password);
-        $dataCreate['image'] = $this->user->saveImage($request);
+        // $dataCreate['image'] = $this->user->saveImage($request);
         $user = $this->user->create($dataCreate);
-        $user->images()->create(['url' => $dataCreate['image']]);
+        // $user->images()->create(['url' => $dataCreate['image']]);
         $user->roles()->attach($dataCreate['role_ids']);
         return to_route('users.index')->with(['message' => 'create success']);
     }
@@ -104,20 +104,20 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, int|string $id): \Illuminate\Http\RedirectResponse
     {
         $dataUpdate= $request->except('password');
-        $user = $this->user->findOrFall($id)->load('roles');
+        $user = $this->user->findOrFail($id)->load('roles');
         if($request->password){
             $dataUpdate['password'] = Hash::make($request->password);
         }
-        $curentImage = $user->images ? $user->images->first()->url : '';
+        // $curentImage = $user->images ? $user->images->first()->url : '';
 
-        $dataUpdate['image'] = $this->user->updateImage($request, $curentImage);
+        // $dataUpdate['image'] = $this->user->updateImage($request, $curentImage);
 
         $user->update($dataUpdate);
 
-        $user->images()->delete();
-        $user->images()->create(['url' => $dataUpdate['image']]);
+        // $user->images()->delete();
+        // $user->images()->create(['url' => $dataUpdate['image']]);
         $user->roles()->sync($dataUpdate['role_ids'] ?? []);
-        return to_route('users.index')->with(['message' => 'create success']);
+        return to_route('users.index')->with(['message' => 'Update success']);
      }
 
     /**
@@ -128,11 +128,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = $this->user->findOrFall($id)->load('roles');
-        $user->images()->delete($id);
-        $imageName = $user->images ? $user->images->first()->url : '';
+        $user = $this->user->findOrFail($id)->load('roles');
+        // $user->images()->delete($id);
+        // $imageName = $user->images ? $user->images->first()->url : '';
 
-        $this->user->deleteImage($imageName);
+        // $this->user->deleteImage($imageName);
         return redirect()->route('users.index')->with(['message' => 'Delete success']);
     }
 }

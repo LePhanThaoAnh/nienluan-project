@@ -7,7 +7,7 @@
       <div class="row px-xl-5">
           @if (session('message'))
               <div class="row">
-                  <h3 class="text-danger">{{ session('message') }}</h3>
+                  <h3 class="text-danger" >{{ session('message') }}</h3>
               </div>
           @endif
           <div class="col-lg-8 table-responsive mb-5">
